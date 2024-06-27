@@ -11,7 +11,12 @@ async function loadMovies(searchTerm){
     const res = await fetch(`${URL}`);
     const data = await res.json();
     // console.log(data.Search);
-    if(data.Response == "True") displayMovieList(data.Search);
+    if(data.Response == "True") {
+        
+    displayMovieList(data.Search);
+    // loadMovieDetails();
+
+    }
 }
 
 function findMovies(){
@@ -28,13 +33,12 @@ function displayMovieList(movies){
     searchList.innerHTML = "";
     for(let idx = 0; idx < movies.length; idx++){
         let movieListItem = document.createElement('div');
-        movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
+        movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in data-id
         movieListItem.classList.add('search-list-item');
         if(movies[idx].Poster != "N/A")
             moviePoster = movies[idx].Poster;
         else 
             moviePoster = "image_not_found.png";
-
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${moviePoster}">
