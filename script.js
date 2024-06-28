@@ -49,6 +49,7 @@ function displayMovieList(movies){
         </div>
         `;
         searchList.appendChild(movieListItem);
+        // searchList.filter((element) => !element.completed).slice(0,6);
     }
     loadMovieDetails();
 }
