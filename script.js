@@ -12,10 +12,11 @@ async function loadMovies(searchTerm){
     const data = await res.json();
     // console.log(data.Search);
     if(data.Response == "True") {
-        
-    displayMovieList(data.Search);
-    // loadMovieDetails();
 
+    // gets the first 6 results from the search of the user
+    const firstSixElements = data.Search.slice(0,6);
+    displayMovieList(firstSixElements);
+    // loadMovieDetails();
     }
 }
 
